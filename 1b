@@ -1,0 +1,9 @@
+val = int(input("Enter a value : "))
+str_val = str(val)
+ifstr_val == str_val[::-1]:
+ print("Palindrome")
+else:
+ print("Not a Palindrome")
+fori in range(10):
+if str_val.count(str(i)) > 0:
+ print(str(i), "appears", str_val.count(str(i)), "times")
