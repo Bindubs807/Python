@@ -1,0 +1,45 @@
+import numpy as np
+from bokeh.plotting import figure, show, output_file, output_notebook
+from bokeh.models import ColumnDataSource
+from bokeh.models.annotations import Label
+from bokeh.models.tools import HoverTool
+x_bar = [1, 2, 3, 4]
+y_bar = [3, 7, 6, 10]
+x_scatter = [1, 2, 3, 4]
+y_scatter = [2, 3, 4, 5]
+def create_line_plot( ):
+x1 = [1, 2, 3, 4, 5]
+y1 = [2, 4, 6, 8, 10]
+x2 = [1, 2, 3, 3, 5]
+y2 = [3, 6, 2, 8, 5]
+line_plot = figure(title="Bokeh Line Graph with Annotations and Legends", 
+ x_axis_label="X-axis", y_axis_label="Y-axis")
+source1 = ColumnDataSource(data={'x': x1, 'y': y1})
+source2 = ColumnDataSource(data={'x': x2, 'y': y2})
+line_plot.line(x='x', y='y', source=source1, line_width=2, legend_label="Line 1", 
+ line_color="blue")
+line_plot.line(x='x', y='y', source=source2, line_width=2, legend_label="Line 2", 
+ line_color="green")
+hover = HoverTool(tooltips=[("X", "@x"), ("Y", "@y")], mode='vline')
+line_plot.add_tools(hover)
+annotations = [
+Label(x=2, y=7, text="Annotation 1", text_font_size="12pt", 
+ text_color = "magenta") ,
+Label(x=4, y=5, text="Annotation 2", text_font_size="12pt", 
+ text_color="brown"),
+]
+for annotation in annotations:
+ line_plot.add_layout(annotation)
+line_plot.legend.location = "top_left"
+return line_plot
+output_file("bokeh_line_plot.html")
+line_plot = create_line_plot()
+show(line_plot)
+output_file("bokeh_bar_plot.html")
+bar_plot = figure(title="Bar Plot", x_axis_label="X-axis", y_axis_label="Y-axis")
+bar_plot.vbar(x_bar, top=y_bar, width=0.5, color="green")
+show(bar_plot)
+output_file("bokeh_scatter_plot.html")
+scatter_plot = figure(title="Scatter Plot", x_axis_label="X-axis", y_axis_label="Yaxis")
+scatter_plot.scatter(x_scatter, y_scatter, size=8, color="red")
+show(scatter_plot)
