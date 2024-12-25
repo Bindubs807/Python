@@ -1,0 +1,13 @@
+import matplotlib.pyplot as plt
+x = [1, 2, 3, 4, 5]
+y = [2, 4, 6, 8, 10]
+plt.plot(x, y, marker='o', linestyle='-', color='b', label='Solid Line')
+plt.plot(x, [i + 1 for i in y], marker='s', linestyle='--', color='g', label='Dashed Line')
+plt.plot(x, [i - 1 for i in y], marker='^', linestyle=':', color='r', label='Dotted Line')
+plt.plot(x, [i - 2 for i in y], marker='*', linestyle='-.', color='m', label='Custom Style')
+plt.xlabel('X-axis') 
+plt.ylabel('Y-axis')
+plt.title('Linear Plot with Line Formatting Example')
+plt.legend( )
+plt.grid(True) 
+plt.show( )
